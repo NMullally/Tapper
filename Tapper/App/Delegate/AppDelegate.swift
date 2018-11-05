@@ -13,9 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private func setupRootViewController()
+    {
+        let navController = window!.rootViewController as! UINavigationController
+        let vc = navController.viewControllers[0] as! MainMenuViewController
+        
+        vc.delegate = self
+        
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        setupRootViewController()
+        
+        
         return true
     }
 
@@ -40,7 +51,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
-
+extension AppDelegate: MainMenuViewControllerDelegate
+{
+    func mainMenuControllerStartPressed(_ controller: MainMenuViewController) {
+        
+        let newWindow = UIWindow(frame: window!.bounds)
+        newWindow.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        newWindow.makeKeyAndVisible()
+        newWindow.alpha = 0
+        
+        UIView.animate(withDuration: 0.3, animations:
+            {
+                newWindow.alpha = 1.0
+        }, completion:
+            {
+                _ in
+                self.window = newWindow
+        })
+        
+        
+    }
 }
 
