@@ -70,7 +70,14 @@ extension AboutPageViewController : UIPageViewControllerDataSource
         let nextIndex = pageIndex - 1
         let vcSize = orderedViewController.count
         
-        if (nextIndex < 0 || vcSize < nextIndex)
+        guard nextIndex >= 0
+            else
+        {
+            return orderedViewController.last
+        }
+        
+        guard vcSize > nextIndex
+            else
         {
             return nil
         }
@@ -89,7 +96,14 @@ extension AboutPageViewController : UIPageViewControllerDataSource
         let nextIndex = pageIndex + 1
         let vcSize = orderedViewController.count
         
-        if (vcSize == nextIndex || vcSize < nextIndex)
+        guard vcSize != nextIndex
+            else
+        {
+            return orderedViewController.first
+        }
+        
+        guard vcSize > nextIndex
+            else
         {
             return nil
         }
