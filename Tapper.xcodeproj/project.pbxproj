@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3371000C2193276100D511DD /* first-names.json in Resources */ = {isa = PBXBuildFile; fileRef = 3371000B2193276100D511DD /* first-names.json */; };
+		3371000F219327EC00D511DD /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3371000E219327EC00D511DD /* FileManager.swift */; };
+		3371001121932DE300D511DD /* RandomNameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3371001021932DE300D511DD /* RandomNameGenerator.swift */; };
 		33DD5DB1218F2B72003CBEA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD5DB0218F2B72003CBEA7 /* AppDelegate.swift */; };
 		33DD5DB3218F2B72003CBEA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD5DB2218F2B72003CBEA7 /* ViewController.swift */; };
 		33DD5DB6218F2B72003CBEA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33DD5DB4218F2B72003CBEA7 /* Main.storyboard */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3371000B2193276100D511DD /* first-names.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "first-names.json"; sourceTree = "<group>"; };
+		3371000E219327EC00D511DD /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		3371001021932DE300D511DD /* RandomNameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNameGenerator.swift; sourceTree = "<group>"; };
 		33DD5DAD218F2B72003CBEA7 /* Tapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33DD5DB0218F2B72003CBEA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33DD5DB2218F2B72003CBEA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3371000D219327DC00D511DD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3371000E219327EC00D511DD /* FileManager.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		33DD5DA4218F2B72003CBEA7 = {
 			isa = PBXGroup;
 			children = (
@@ -80,9 +94,11 @@
 		33DD5DC2218F30A6003CBEA7 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				3371000D219327DC00D511DD /* Extensions */,
 				33DD5DC5218F30EB003CBEA7 /* Controller */,
 				33DD5DC4218F30DD003CBEA7 /* View */,
 				33DD5DC3218F30D3003CBEA7 /* Delegate */,
+				3371001021932DE300D511DD /* RandomNameGenerator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -152,6 +168,7 @@
 		33F5DD312191D85B009A84A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3371000B2193276100D511DD /* first-names.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -240,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33DD5DBB218F2B73003CBEA7 /* LaunchScreen.storyboard in Resources */,
+				3371000C2193276100D511DD /* first-names.json in Resources */,
 				33F5DD3A2191D955009A84A8 /* MainMenu.storyboard in Resources */,
 				33DD5DCF2190B507003CBEA7 /* MainMenu.xcassets in Resources */,
 				33DD5DB8218F2B73003CBEA7 /* Assets.xcassets in Resources */,
@@ -256,9 +274,11 @@
 			files = (
 				33F5DD352191D8C9009A84A8 /* PlayerInfoCell.swift in Sources */,
 				33DD5DCC218F3452003CBEA7 /* MainMenuViewController.swift in Sources */,
+				3371001121932DE300D511DD /* RandomNameGenerator.swift in Sources */,
 				33F5DD372191D8E5009A84A8 /* PlayerInfoTableViewController.swift in Sources */,
 				33DD5DB3218F2B72003CBEA7 /* ViewController.swift in Sources */,
 				33DD5DB1218F2B72003CBEA7 /* AppDelegate.swift in Sources */,
+				3371000F219327EC00D511DD /* FileManager.swift in Sources */,
 				33DD5DD12190C524003CBEA7 /* AboutPageViewController.swift in Sources */,
 				33F5DD3C2191DA24009A84A8 /* PlayerInfo.swift in Sources */,
 			);

@@ -9,7 +9,7 @@
 import UIKit
 
 class PlayerInfoTableViewController: UITableViewController
-{    
+{
     var tableData: [PlayerInfo] =
     [
         PlayerInfo(name: "Billy", score: 30324),
@@ -42,7 +42,7 @@ class PlayerInfoTableViewController: UITableViewController
     
     @objc func addItem()
     {
-        let tempPlayer = PlayerInfo(name: "Temp", score: 0)
+        let tempPlayer = PlayerInfo()
         tableData.append(tempPlayer)
         
         // rather than reloading all the tableview data, we just call insert at the index of hte new item

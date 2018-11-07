@@ -19,6 +19,11 @@ class PlayerInfo: NSObject
         self.score = score
     }
     
+    override init() {
+        self.name = RandomNameGenerator.shared.getRandomName()
+        self.score = Int.random(in: 0...10000)
+    }
+    
     func configureCell(_ cell: PlayerInfoCell)
     {
         cell.mHighScore.text = String(self.score)
