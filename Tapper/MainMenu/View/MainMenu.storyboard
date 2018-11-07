@@ -253,7 +253,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Leaderboard" id="fg4-qt-aWU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="sDt-cm-ubH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sDt-cm-ubH">
                             <connections>
                                 <action selector="addItem" destination="W8E-mB-e74" id="z0O-JV-pOh"/>
                             </connections>
