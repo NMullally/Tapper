@@ -28,4 +28,26 @@ public class Player: NSManagedObject {
         cell.mHighScore.text = String(self.score)
         cell.mName.text = self.name
     }
+    
+    static func fetchPlayers(context: NSManagedObjectContext) -> [Player]
+    {
+        let fetchRequest:NSFetchRequest<Player> = Player.fetchRequest()
+        
+        var players:[Player] = []
+        
+        let scoreSort = NSSortDescriptor(key:"score", ascending:false)
+        
+        fetchRequest.sortDescriptors = [scoreSort]
+        do
+        {
+            players = try context.fetch(fetchRequest)
+        }
+        catch let error as NSError
+        {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        return players
+    }
+    
 }

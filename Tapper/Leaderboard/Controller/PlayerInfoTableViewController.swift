@@ -29,14 +29,8 @@ class PlayerInfoTableViewController: UITableViewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        do
-        {
-            tableData = try context.fetch(Player.fetchRequest())
-        }
-        catch let error as NSError
-        {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
+        // returns a ordered array of players
+        tableData = Player.fetchPlayers(context: context)
     }
     
     override func setEditing(_ editing: Bool, animated: Bool)
@@ -51,18 +45,33 @@ class PlayerInfoTableViewController: UITableViewController
         tableView.setEditing(tableView.isEditing, animated: true)
     }
     
+    func updatePlayerPositions()
+    {
+        for cell in tableView.visibleCells
+        {
+            if let playerCell = cell as? PlayerInfoCell
+            {
+                playerCell.mPosition.text = String(tableView.indexPath(for: cell)!.row)
+            }
+        }
+        
+    }
+    
     @objc func addItem()
     {
         let player = Player(entity: Player.entity(), insertInto: context)
         player.createNewPlayer()
-        tableData.append(player)
         
+        // get the correct index so the table is always sorted
+        let index = tableData.insertionIndex(of: player, using: {$0.score > $1.score})
+        tableData.insert(player, at: index)
         appDelegate.saveContext()
         
         // rather than reloading all the tableview data, we just call insert at the index of hte new item
-        let row = tableData.count - 1
-        let indexPath = IndexPath(row: row, section: 0)
+        let indexPath = IndexPath(row: index, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        
+        updatePlayerPositions()
     }
 
     @IBAction func deleteItem(_ sender: Any?)
@@ -72,7 +81,6 @@ class PlayerInfoTableViewController: UITableViewController
             for indexPath in selectedRows
             {
                 let row = indexPath.row > tableData.count - 1  ? tableData.count - 1 : indexPath.row
-//                let player = tableData[row]
                 let player = tableData.remove(at: row)
                 context.delete(player)
                 appDelegate.saveContext()
@@ -95,7 +103,7 @@ class PlayerInfoTableViewController: UITableViewController
 
         let playerInfo = tableData[indexPath.row]
         playerInfo.configureCell(cell)
-        // Configure the cell...
+        cell.mPosition.text = String(indexPath.row)
 
         return cell
     }
