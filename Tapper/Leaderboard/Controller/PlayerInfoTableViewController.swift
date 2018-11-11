@@ -10,12 +10,10 @@ import UIKit
 
 class PlayerInfoTableViewController: UITableViewController
 {
-    var tableData: [PlayerInfo] =
-    [
-        PlayerInfo(name: "Billy", score: 30324),
-        PlayerInfo(name: "Hubert", score: 34),
-        PlayerInfo(name: "Sandra", score: 902)
-    ]
+    var tableData: [Player] = []
+    
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +24,19 @@ class PlayerInfoTableViewController: UITableViewController
         self.navigationItem.rightBarButtonItems = [editButtonItem, addItemButton]
         
         tableView.allowsMultipleSelectionDuringEditing = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        do
+        {
+            tableData = try context.fetch(Player.fetchRequest())
+        }
+        catch let error as NSError
+        {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
     override func setEditing(_ editing: Bool, animated: Bool)
@@ -42,8 +53,11 @@ class PlayerInfoTableViewController: UITableViewController
     
     @objc func addItem()
     {
-        let tempPlayer = PlayerInfo()
-        tableData.append(tempPlayer)
+        let player = Player(entity: Player.entity(), insertInto: context)
+        player.createNewPlayer()
+        tableData.append(player)
+        
+        appDelegate.saveContext()
         
         // rather than reloading all the tableview data, we just call insert at the index of hte new item
         let row = tableData.count - 1
@@ -59,7 +73,9 @@ class PlayerInfoTableViewController: UITableViewController
             {
                 let row = indexPath.row > tableData.count - 1  ? tableData.count - 1 : indexPath.row
 //                let player = tableData[row]
-                tableData.remove(at: row)
+                let player = tableData.remove(at: row)
+                context.delete(player)
+                appDelegate.saveContext()
             }
             
             tableView.beginUpdates()

@@ -10,6 +10,9 @@
 		3371000C2193276100D511DD /* first-names.json in Resources */ = {isa = PBXBuildFile; fileRef = 3371000B2193276100D511DD /* first-names.json */; };
 		3371000F219327EC00D511DD /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3371000E219327EC00D511DD /* FileManager.swift */; };
 		3371001121932DE300D511DD /* RandomNameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3371001021932DE300D511DD /* RandomNameGenerator.swift */; };
+		337100142193334600D511DD /* Player.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 337100122193334600D511DD /* Player.xcdatamodeld */; };
+		337100172193349D00D511DD /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337100152193349D00D511DD /* Player+CoreDataClass.swift */; };
+		337100182193349D00D511DD /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337100162193349D00D511DD /* Player+CoreDataProperties.swift */; };
 		33DD5DB1218F2B72003CBEA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD5DB0218F2B72003CBEA7 /* AppDelegate.swift */; };
 		33DD5DB3218F2B72003CBEA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD5DB2218F2B72003CBEA7 /* ViewController.swift */; };
 		33DD5DB6218F2B72003CBEA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33DD5DB4218F2B72003CBEA7 /* Main.storyboard */; };
@@ -21,13 +24,15 @@
 		33F5DD352191D8C9009A84A8 /* PlayerInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5DD342191D8C9009A84A8 /* PlayerInfoCell.swift */; };
 		33F5DD372191D8E5009A84A8 /* PlayerInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5DD362191D8E5009A84A8 /* PlayerInfoTableViewController.swift */; };
 		33F5DD3A2191D955009A84A8 /* MainMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33F5DD392191D955009A84A8 /* MainMenu.storyboard */; };
-		33F5DD3C2191DA24009A84A8 /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33F5DD3B2191DA24009A84A8 /* PlayerInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3371000B2193276100D511DD /* first-names.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "first-names.json"; sourceTree = "<group>"; };
 		3371000E219327EC00D511DD /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		3371001021932DE300D511DD /* RandomNameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNameGenerator.swift; sourceTree = "<group>"; };
+		337100132193334600D511DD /* Player.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Player.xcdatamodel; sourceTree = "<group>"; };
+		337100152193349D00D511DD /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
+		337100162193349D00D511DD /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		33DD5DAD218F2B72003CBEA7 /* Tapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33DD5DB0218F2B72003CBEA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33DD5DB2218F2B72003CBEA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,7 +46,6 @@
 		33F5DD342191D8C9009A84A8 /* PlayerInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoCell.swift; sourceTree = "<group>"; };
 		33F5DD362191D8E5009A84A8 /* PlayerInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfoTableViewController.swift; sourceTree = "<group>"; };
 		33F5DD392191D955009A84A8 /* MainMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainMenu.storyboard; sourceTree = "<group>"; };
-		33F5DD3B2191DA24009A84A8 /* PlayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,15 @@
 				3371000E219327EC00D511DD /* FileManager.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		33710019219334B600D511DD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				337100152193349D00D511DD /* Player+CoreDataClass.swift */,
+				337100162193349D00D511DD /* Player+CoreDataProperties.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		33DD5DA4218F2B72003CBEA7 = {
@@ -158,6 +171,7 @@
 		33F5DD302191D846009A84A8 /* Leaderboard */ = {
 			isa = PBXGroup;
 			children = (
+				33710019219334B600D511DD /* Data */,
 				33F5DD332191D873009A84A8 /* Model */,
 				33F5DD322191D86A009A84A8 /* Controller */,
 				33F5DD312191D85B009A84A8 /* Resources */,
@@ -168,6 +182,7 @@
 		33F5DD312191D85B009A84A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				337100122193334600D511DD /* Player.xcdatamodeld */,
 				3371000B2193276100D511DD /* first-names.json */,
 			);
 			path = Resources;
@@ -185,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				33F5DD342191D8C9009A84A8 /* PlayerInfoCell.swift */,
-				33F5DD3B2191DA24009A84A8 /* PlayerInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,13 +288,15 @@
 			files = (
 				33F5DD352191D8C9009A84A8 /* PlayerInfoCell.swift in Sources */,
 				33DD5DCC218F3452003CBEA7 /* MainMenuViewController.swift in Sources */,
+				337100182193349D00D511DD /* Player+CoreDataProperties.swift in Sources */,
 				3371001121932DE300D511DD /* RandomNameGenerator.swift in Sources */,
+				337100172193349D00D511DD /* Player+CoreDataClass.swift in Sources */,
 				33F5DD372191D8E5009A84A8 /* PlayerInfoTableViewController.swift in Sources */,
 				33DD5DB3218F2B72003CBEA7 /* ViewController.swift in Sources */,
 				33DD5DB1218F2B72003CBEA7 /* AppDelegate.swift in Sources */,
+				337100142193334600D511DD /* Player.xcdatamodeld in Sources */,
 				3371000F219327EC00D511DD /* FileManager.swift in Sources */,
 				33DD5DD12190C524003CBEA7 /* AboutPageViewController.swift in Sources */,
-				33F5DD3C2191DA24009A84A8 /* PlayerInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +496,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		337100122193334600D511DD /* Player.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				337100132193334600D511DD /* Player.xcdatamodel */,
+			);
+			currentVersion = 337100132193334600D511DD /* Player.xcdatamodel */;
+			path = Player.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 33DD5DA5218F2B72003CBEA7 /* Project object */;
 }
