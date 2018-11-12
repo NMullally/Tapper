@@ -54,7 +54,6 @@ class PlayerInfoTableViewController: UITableViewController
                 playerCell.mPosition.text = String(tableView.indexPath(for: cell)!.row)
             }
         }
-        
     }
     
     @objc func addItem()
@@ -89,6 +88,8 @@ class PlayerInfoTableViewController: UITableViewController
             tableView.beginUpdates()
             tableView.deleteRows(at: selectedRows, with: .automatic)
             tableView.endUpdates()
+            
+            updatePlayerPositions()
         }
     }
     
