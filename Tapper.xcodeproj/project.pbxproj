@@ -14,6 +14,8 @@
 		337100172193349D00D511DD /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337100152193349D00D511DD /* Player+CoreDataClass.swift */; };
 		337100182193349D00D511DD /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337100162193349D00D511DD /* Player+CoreDataProperties.swift */; };
 		33AD76E12198A5C100FB41CE /* Collection+index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD76E02198A5C100FB41CE /* Collection+index.swift */; };
+		33AD76E42199CB9000FB41CE /* ButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD76E32199CB9000FB41CE /* ButtonManager.swift */; };
+		33AD76E62199CFB000FB41CE /* SupportExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33AD76E52199CFB000FB41CE /* SupportExtensions.swift */; };
 		33DD5DB1218F2B72003CBEA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD5DB0218F2B72003CBEA7 /* AppDelegate.swift */; };
 		33DD5DB3218F2B72003CBEA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DD5DB2218F2B72003CBEA7 /* ViewController.swift */; };
 		33DD5DB6218F2B72003CBEA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33DD5DB4218F2B72003CBEA7 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 		337100152193349D00D511DD /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
 		337100162193349D00D511DD /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		33AD76E02198A5C100FB41CE /* Collection+index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+index.swift"; sourceTree = "<group>"; };
+		33AD76E32199CB9000FB41CE /* ButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonManager.swift; sourceTree = "<group>"; };
+		33AD76E52199CFB000FB41CE /* SupportExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportExtensions.swift; sourceTree = "<group>"; };
 		33DD5DAD218F2B72003CBEA7 /* Tapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33DD5DB0218F2B72003CBEA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33DD5DB2218F2B72003CBEA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 			children = (
 				3371000E219327EC00D511DD /* FileManager.swift */,
 				33AD76E02198A5C100FB41CE /* Collection+index.swift */,
+				33AD76E52199CFB000FB41CE /* SupportExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -75,6 +80,14 @@
 			children = (
 				337100152193349D00D511DD /* Player+CoreDataClass.swift */,
 				337100162193349D00D511DD /* Player+CoreDataProperties.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		33AD76E22199CB7E00FB41CE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				33AD76E32199CB9000FB41CE /* ButtonManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -110,6 +123,7 @@
 		33DD5DC2218F30A6003CBEA7 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				33AD76E22199CB7E00FB41CE /* Data */,
 				3371000D219327DC00D511DD /* Extensions */,
 				33DD5DC5218F30EB003CBEA7 /* Controller */,
 				33DD5DC4218F30DD003CBEA7 /* View */,
@@ -291,12 +305,14 @@
 			files = (
 				33F5DD352191D8C9009A84A8 /* PlayerInfoCell.swift in Sources */,
 				33DD5DCC218F3452003CBEA7 /* MainMenuViewController.swift in Sources */,
+				33AD76E42199CB9000FB41CE /* ButtonManager.swift in Sources */,
 				337100182193349D00D511DD /* Player+CoreDataProperties.swift in Sources */,
 				3371001121932DE300D511DD /* RandomNameGenerator.swift in Sources */,
 				33AD76E12198A5C100FB41CE /* Collection+index.swift in Sources */,
 				337100172193349D00D511DD /* Player+CoreDataClass.swift in Sources */,
 				33F5DD372191D8E5009A84A8 /* PlayerInfoTableViewController.swift in Sources */,
 				33DD5DB3218F2B72003CBEA7 /* ViewController.swift in Sources */,
+				33AD76E62199CFB000FB41CE /* SupportExtensions.swift in Sources */,
 				33DD5DB1218F2B72003CBEA7 /* AppDelegate.swift in Sources */,
 				337100142193334600D511DD /* Player.xcdatamodeld in Sources */,
 				3371000F219327EC00D511DD /* FileManager.swift in Sources */,
