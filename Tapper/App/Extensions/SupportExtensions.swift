@@ -27,3 +27,8 @@ public extension CGPoint
         return sqrt(pow(distanceTo.x - x , 2) + pow(distanceTo.y - y, 2))
     }
 }
+
+func -(lhs: CGPoint, rhs: CGPoint) -> CGPoint
+{
+    return CGPoint(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
+}

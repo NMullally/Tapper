@@ -9,30 +9,12 @@
 import Foundation
 import UIKit
 
-// try rename , cant use button type and unsure of other name
-enum ButtonSafety {
-    case Safe, Unsafe
-}
-
-struct GameButton
-{
-    var button: UIButton
-    var position: CGPoint
-    var isSafe: ButtonSafety
-    
-    init() {
-        button = UIButton()
-        button.backgroundColor = UIColor.randomColor
-        
-        isSafe = Int.random(in: 0...1) == 0 ? ButtonSafety.Safe : ButtonSafety.Unsafe
-        position = CGPoint.zero
-    }
-}
-
-
 class ButtonManager
 {
     static let shared = ButtonManager()
+    weak var gameView: UIView!
+    
+    var buttons: [GameButton] = []
     
     enum ButtonType {
         case Button, Slider, Switch
@@ -42,30 +24,25 @@ class ButtonManager
     {
     }
     
-    func createRandomArray(for level: Int) -> [ButtonType]
+    func addButton()
     {
-        var returnArray: [ButtonType] = []
+        let newButton = GameButton()
+        newButton.setupButton()
         
-        returnArray.append(contentsOf: [ButtonType.Button, .Button, .Button, .Button])
+        buttons.append(newButton)
+        gameView.addSubview(newButton)
         
-        if level > 4
-        {
-            
-        }
-        
-        return returnArray
     }
     
-    func setupButtons(buttons: [ButtonType])
+    // should reuse rather than create and delete
+    func removeButton(button: GameButton)
     {
-        var array = [GameButton(), GameButton(), GameButton()]
-        
-        for button in array
+        if let index = buttons.firstIndex(of: button)
         {
-            button.button.frame = CGRect(x: 50, y: 50, width: 50, height: 50)
-            
+            self.buttons.remove(at: index)
+            button.removeFromSuperview()
+            addButton()
         }
     }
-    
     
 }
