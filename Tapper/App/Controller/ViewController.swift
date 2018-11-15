@@ -56,13 +56,13 @@ class ViewController: UIViewController
     {
         super.viewDidLoad()
         
-        ButtonManager.shared.gameView = gameView
+        GameManager.shared.scoreDelegate = self
+        GameManager.shared.gameView = gameView
     
         // Do any additional setup after loading the view, typically from a nib.
         perform(#selector(beginNewLevel), with: nil, afterDelay: 0.1)
         
         score = 0
-        
         
         for _ in 0...20
         {

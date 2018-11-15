@@ -12,8 +12,9 @@ import UIKit
 class ButtonManager
 {
     static let shared = ButtonManager()
-    weak var gameView: UIView!
     
+    private weak var gameView: UIView? = GameManager.shared.gameView
+        
     var buttons: [GameButton] = []
     
     enum ButtonType {
@@ -30,8 +31,7 @@ class ButtonManager
         newButton.setupButton()
         
         buttons.append(newButton)
-        gameView.addSubview(newButton)
-        
+        gameView!.addSubview(newButton)
     }
     
     // should reuse rather than create and delete
