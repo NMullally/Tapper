@@ -10,8 +10,13 @@ import UIKit
 
 class GameButton: UIButton
 {
+    
+    button should use rounded rect that goes from square to almost circle and then scale in if possible when deleting.
+    
     let kButtonSize = CGSize(width: 50, height: 50)
     let (minDuration, maxDuration) = (2.0, 5.0)
+    let kButtonCorrectScore = 100
+    let kButtonWrongScore = -100
     
     private weak var gameView: UIView? = GameManager.shared.gameView
     
@@ -24,11 +29,14 @@ class GameButton: UIButton
     {
         case Safe, Unsafe
     }
+    
     var position: CGPoint = CGPoint.zero
     var isSafe: ButtonSafety = .Safe
     
     @objc func setupTimers()
     {
+        return;
+            
         destroyTimer = Timer.scheduledTimer(timeInterval: TimeInterval.random(in: minDuration...maxDuration),
                                             target: self,
                                             selector: #selector(removeButtonAnimation),
@@ -39,16 +47,16 @@ class GameButton: UIButton
     func setupButton()
     {
         setupTimers()
+        isSafe = Int.random(in: 0...1) == 0 ? .Safe : .Unsafe
         
         let position = generatePosition()
         
+        self.isEnabled = false
         self.frame = CGRect(x: position.x, y: position.y, width: kButtonSize.width, height: kButtonSize.height)
         self.backgroundColor = UIColor.randomColor
-        self.setTitle(Int.random(in: 0...1) == 0 ? "X" : "O", for: .normal)
-        self.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-                
         self.transform = CGAffineTransform(scaleX: 0, y: 0)
-        self.isEnabled = false
+        self.setTitle(isSafe == .Safe ? "X" : "O", for: .normal)
+        self.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         UIView.animateKeyframes(withDuration: 0.8,
                                 delay: 0,
@@ -101,13 +109,11 @@ class GameButton: UIButton
                 let dist = point.distance(distanceTo: button.center)
                 if dist < (kButtonSize.width + 10)
                 {
-                    print("\(dist)")
                     canPlace = false
                     break
                 }
             }
-        }
-            while canPlace == false
+        } while canPlace == false
         
         // return the center point of the button
         return point - CGPoint(x: kButtonSize.width / 2, y: kButtonSize.height / 2)
@@ -115,10 +121,11 @@ class GameButton: UIButton
     
     @objc func buttonPressed(sender: UIButton!)
     {
-        GameManager.shared.incrementScore()
-        destroyTimer?.invalidate()
-        
         wasPressed = true
+
+        GameManager.shared.incrementScore(amount: self.isSafe == ButtonSafety.Safe ? kButtonCorrectScore : kButtonWrongScore)
+        
+        destroyTimer?.invalidate()
         
         removeButtonAnimation()
     }
@@ -146,7 +153,6 @@ class GameButton: UIButton
                 })
         }
             , completion: { _ in
-                
                 ButtonManager.shared.removeButton(button: self)
         })
     }

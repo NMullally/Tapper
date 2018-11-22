@@ -22,8 +22,10 @@ class GameManager
         // init other managers
     }
     
-    func incrementScore()
+    func incrementScore(amount: Int)
     {
-        scoreDelegate?.incrementScore()
+        scoreDelegate?.incrementScore(amount: amount)
     }
+    
+    
 }

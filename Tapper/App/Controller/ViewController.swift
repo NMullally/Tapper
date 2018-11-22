@@ -10,13 +10,12 @@ import UIKit
 
 protocol scoreDelegate
 {
-    func incrementScore()
+    func incrementScore(amount: Int)
 }
 
 class ViewController: UIViewController
 {
     var buttons: [UIButton] = []
-    
     
     @IBOutlet weak var levelLabel: UILabel!
     
@@ -32,7 +31,15 @@ class ViewController: UIViewController
     {
         didSet
         {
+            UIView.animate(withDuration: 0.6, animations:
+                {
+                    self.comboLabel.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }
+                , completion: { _ in
+                    self.comboLabel.transform = CGAffineTransform.identity
+                    })
             
+            comboLabel.text = "x:\(combo)"
         }
     }
     
@@ -100,8 +107,9 @@ class ViewController: UIViewController
 
 extension ViewController : scoreDelegate
 {
-    func incrementScore()
+    func incrementScore(amount: Int)
     {
-        score += 100
+        combo = amount > 0 ? combo + 1 : 0
+        score += amount
     }
 }
