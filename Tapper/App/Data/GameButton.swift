@@ -11,33 +11,68 @@ import UIKit
 class GameButton: UIButton
 {
     
-    button should use rounded rect that goes from square to almost circle and then scale in if possible when deleting.
+    //    button should use rounded rect that goes from square to almost circle and then scale in if possible when deleting.
     
-    let kButtonSize = CGSize(width: 50, height: 50)
-    let (minDuration, maxDuration) = (2.0, 5.0)
-    let kButtonCorrectScore = 100
-    let kButtonWrongScore = -100
-    
-    private weak var gameView: UIView? = GameManager.shared.gameView
-    
-    private var wasPressed: Bool = false
-    
-    var destroyTimer: Timer? = nil
-
     // try rename , cant use button type and unsure of other name
     enum ButtonSafety
     {
         case Safe, Unsafe
     }
     
+    private enum Score
+    {
+        static let Incorrect = -100
+        static let Correct = 100
+    }
+    
+    private enum kButton
+    {
+        static let Width : CGFloat = 50
+        static let Height : CGFloat = 50
+        static let Padding : CGFloat = 2
+        static let BorderWidth : CGFloat = 5
+        static let BorderColor : CGColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        static let DistanceBetween = {return kButton.Width + 10}
+    }
+    
+    private enum Constants
+    {
+        static let minDuration = 2.0
+        static let maxDuration = 5.0
+    }
+    
+    private enum kDisplayAnimation
+    {
+        static let TotalDuration = 0.8
+        static let InitalScaleDuration = 0.5
+        static let ScaleTo : CGFloat = 1.2
+        static let FinalScaleDuration = 0.3
+        static let FinalScale : CGFloat = 1.0
+    }
+    
+    private enum kRemoveAnimation
+    {
+        static let TotalDuration = 0.5
+        static let InitalScaleDuration = 0.25
+        static let ScaleTo : CGFloat = 1.2
+        static let FinalScaleDuration = 0.25
+        static let FinalScale : CGFloat = 0.0
+        
+        static let cornerRadius = { return kButton.Width / 2 }
+    }
+    
+    private weak var gameView: UIView? = GameManager.shared.gameView
+    
+    private var wasPressed: Bool = false
+    var destroyTimer: Timer? = nil
     var position: CGPoint = CGPoint.zero
     var isSafe: ButtonSafety = .Safe
     
     @objc func setupTimers()
     {
         return;
-            
-        destroyTimer = Timer.scheduledTimer(timeInterval: TimeInterval.random(in: minDuration...maxDuration),
+        
+        destroyTimer = Timer.scheduledTimer(timeInterval: TimeInterval.random(in: Constants.minDuration...Constants.maxDuration),
                                             target: self,
                                             selector: #selector(removeButtonAnimation),
                                             userInfo: nil,
@@ -46,41 +81,23 @@ class GameButton: UIButton
     
     func setupButton()
     {
+        //    self.layer.cornerRadius = 25
+        self.layer.borderWidth = kButton.BorderWidth
+        self.layer.borderColor = kButton.BorderColor
+        
         setupTimers()
         isSafe = Int.random(in: 0...1) == 0 ? .Safe : .Unsafe
         
         let position = generatePosition()
         
         self.isEnabled = false
-        self.frame = CGRect(x: position.x, y: position.y, width: kButtonSize.width, height: kButtonSize.height)
+        self.frame = CGRect(x: position.x, y: position.y, width: kButton.Width, height: kButton.Height)
         self.backgroundColor = UIColor.randomColor
         self.transform = CGAffineTransform(scaleX: 0, y: 0)
         self.setTitle(isSafe == .Safe ? "X" : "O", for: .normal)
         self.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
-        UIView.animateKeyframes(withDuration: 0.8,
-                                delay: 0,
-                                animations:
-            {
-                UIView.addKeyframe(withRelativeStartTime: 0.0,
-                                   relativeDuration: 0.5,
-                                   animations:
-                    {
-                        self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-                })
-                
-                UIView.addKeyframe(withRelativeStartTime: 0.5,
-                                   relativeDuration: 0.3,
-                                   animations:
-                    {
-                        self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                })
-        }
-            , completion: { _ in
-                self.isEnabled = true
-                
-                self.performSelector(onMainThread: #selector(self.setupTimers), with: nil, waitUntilDone: false)
-        })
+        displayButtonAnimation()
     }
     
     func generatePosition() -> CGPoint
@@ -88,8 +105,8 @@ class GameButton: UIButton
         var point: CGPoint
         
         // to prevent the buttons placed offscreen, and have + 2 for padding.
-        let minX = kButtonSize.width + 2
-        let minY = kButtonSize.height + 2
+        let minX = kButton.Width + kButton.Padding
+        let minY = kButton.Height + kButton.Padding
         
         let maxX = gameView!.bounds.width - minX
         let maxY = gameView!.bounds.height - minY
@@ -107,7 +124,7 @@ class GameButton: UIButton
             for button in ButtonManager.shared.buttons
             {
                 let dist = point.distance(distanceTo: button.center)
-                if dist < (kButtonSize.width + 10)
+                if dist < kButton.DistanceBetween()
                 {
                     canPlace = false
                     break
@@ -116,14 +133,14 @@ class GameButton: UIButton
         } while canPlace == false
         
         // return the center point of the button
-        return point - CGPoint(x: kButtonSize.width / 2, y: kButtonSize.height / 2)
+        return point - CGPoint(x: kButton.Width / 2, y: kButton.Height / 2)
     }
     
     @objc func buttonPressed(sender: UIButton!)
     {
         wasPressed = true
-
-        GameManager.shared.incrementScore(amount: self.isSafe == ButtonSafety.Safe ? kButtonCorrectScore : kButtonWrongScore)
+        
+        GameManager.shared.incrementScore(amount: self.isSafe == ButtonSafety.Safe ? Score.Correct : Score.Incorrect)
         
         destroyTimer?.invalidate()
         
@@ -133,27 +150,65 @@ class GameButton: UIButton
     @objc func removeButtonAnimation()
     {
         self.isEnabled = false
-
-        UIView.animateKeyframes(withDuration: 0.5,
+        
+        self.layer.borderColor = isSafe == ButtonSafety.Safe ? #colorLiteral(red: 0, green: 1, blue: 0, alpha: 1) : #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+        
+        UIView.animateKeyframes(withDuration: kRemoveAnimation.TotalDuration,
                                 delay: 0,
                                 animations:
             {
                 UIView.addKeyframe(withRelativeStartTime: 0.0,
-                                   relativeDuration: 0.25,
+                                   relativeDuration: kRemoveAnimation.InitalScaleDuration,
                                    animations:
                     {
-                        self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                        if self.wasPressed
+                        {
+                            self.layer.cornerRadius = kRemoveAnimation.cornerRadius()
+                        }
+                        
+                        self.transform = CGAffineTransform(scaleX: kRemoveAnimation.ScaleTo,
+                                                           y: kRemoveAnimation.ScaleTo)
                 })
                 
-                UIView.addKeyframe(withRelativeStartTime: 0.25,
-                                   relativeDuration: 0.25,
+                UIView.addKeyframe(withRelativeStartTime: kRemoveAnimation.InitalScaleDuration,
+                                   relativeDuration: kRemoveAnimation.FinalScaleDuration,
                                    animations:
                     {
-                        self.transform = CGAffineTransform(scaleX: 0, y: 0)
+                        self.transform = CGAffineTransform(scaleX: kRemoveAnimation.FinalScale,
+                                                           y: kRemoveAnimation.FinalScale)
                 })
         }
             , completion: { _ in
                 ButtonManager.shared.removeButton(button: self)
+        })
+    }
+    
+    func displayButtonAnimation()
+    {
+        UIView.animateKeyframes(withDuration: kDisplayAnimation.TotalDuration,
+                                delay: 0,
+                                animations:
+            {
+                UIView.addKeyframe(withRelativeStartTime: 0.0,
+                                   relativeDuration: kDisplayAnimation.InitalScaleDuration,
+                                   animations:
+                    {
+                        self.transform = CGAffineTransform(scaleX: kDisplayAnimation.ScaleTo,
+                                                           y: kDisplayAnimation.ScaleTo)
+                })
+                
+                UIView.addKeyframe(withRelativeStartTime: kDisplayAnimation.InitalScaleDuration,
+                                   relativeDuration: kDisplayAnimation.FinalScaleDuration,
+                                   animations:
+                    {
+                        self.transform = CGAffineTransform(scaleX: kDisplayAnimation.FinalScale,
+                                                           y: kDisplayAnimation.FinalScale)
+                })
+        }
+            , completion: { _ in
+                self.isEnabled = true
+                
+                self.performSelector(onMainThread: #selector(self.setupTimers), with: nil, waitUntilDone: false)
         })
     }
 }
