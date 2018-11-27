@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Tapper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HjH-aT-vlH">
-                                <rect key="frame" x="16" y="28" width="60" height="20.5"/>
+                                <rect key="frame" x="16" y="28" width="60" height="20.666666666666671"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="8Fw-ID-Wvq"/>
                                     <constraint firstAttribute="height" constant="20.5" id="RJt-uc-adq"/>
@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7656788" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NlO-NE-Drq">
-                                <rect key="frame" x="152.5" y="28" width="70.5" height="20.5"/>
+                                <rect key="frame" x="171.66666666666666" y="28" width="71" height="20.666666666666671"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70.5" id="ACg-0L-PfC"/>
                                     <constraint firstAttribute="height" constant="20.5" id="n2G-jU-CCB"/>
@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="x4" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ax3-HE-40e">
-                                <rect key="frame" x="340" y="28" width="19" height="20.5"/>
+                                <rect key="frame" x="379" y="28" width="19" height="20.666666666666671"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20.5" id="v44-cy-wYy"/>
                                 </constraints>
@@ -48,11 +48,32 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="7iU-qu-1SS">
-                                <rect key="frame" x="16" y="56.5" width="343" height="2"/>
+                                <rect key="frame" x="16" y="56.666666666666664" width="382" height="2"/>
                             </progressView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ydl-Rr-7gj">
-                                <rect key="frame" x="16" y="66" width="343" height="581"/>
+                                <rect key="frame" x="16" y="66" width="382" height="650"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7d-A3-lho">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="650"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </view>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mG1-kF-Mhp">
+                                        <rect key="frame" x="116" y="230" width="150" height="190"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="240"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.072387332530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                        <color key="shadowColor" red="0.0" green="1" blue="0.1048771621" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <size key="shadowOffset" width="3" height="4"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="x7d-A3-lho" secondAttribute="bottom" id="Jwq-lB-eVI"/>
+                                    <constraint firstItem="x7d-A3-lho" firstAttribute="top" secondItem="Ydl-Rr-7gj" secondAttribute="top" id="Vnw-2x-MbI"/>
+                                    <constraint firstItem="x7d-A3-lho" firstAttribute="leading" secondItem="Ydl-Rr-7gj" secondAttribute="leading" id="Xq9-Ag-WBg"/>
+                                    <constraint firstAttribute="trailing" secondItem="x7d-A3-lho" secondAttribute="trailing" id="Yqn-Vn-WI8"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -77,6 +98,8 @@
                     </view>
                     <connections>
                         <outlet property="comboLabel" destination="ax3-HE-40e" id="F8l-Nu-U23"/>
+                        <outlet property="countdownLabel" destination="mG1-kF-Mhp" id="I6y-vb-4yl"/>
+                        <outlet property="countdownView" destination="x7d-A3-lho" id="Rlr-Rd-EPK"/>
                         <outlet property="gameView" destination="Ydl-Rr-7gj" id="2Xk-jb-MMk"/>
                         <outlet property="levelLabel" destination="HjH-aT-vlH" id="WIh-JJ-6W0"/>
                         <outlet property="progressBar" destination="7iU-qu-1SS" id="Dk1-K8-mLu"/>
@@ -85,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="61.600000000000001" y="26.53673163418291"/>
+            <point key="canvasLocation" x="60.869565217391312" y="26.086956521739133"/>
         </scene>
     </scenes>
 </document>

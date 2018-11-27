@@ -130,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				33AD76E22199CB7E00FB41CE /* Data */,
-				3371000D219327DC00D511DD /* Extensions */,
 				33DD5DC5218F30EB003CBEA7 /* Controller */,
+				3371000D219327DC00D511DD /* Extensions */,
 				33DD5DC4218F30DD003CBEA7 /* View */,
 				33DD5DC3218F30D3003CBEA7 /* Delegate */,
 				3371001021932DE300D511DD /* RandomNameGenerator.swift */,

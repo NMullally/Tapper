@@ -34,6 +34,11 @@ class ButtonManager
         gameView!.addSubview(newButton)
     }
     
+    func clearButtons()
+    {
+        buttons.forEach{ removeButton(button: $0)}
+    }
+    
     // should reuse rather than create and delete
     func removeButton(button: GameButton)
     {
@@ -41,7 +46,6 @@ class ButtonManager
         {
             self.buttons.remove(at: index)
             button.removeFromSuperview()
-            addButton()
         }
     }
     

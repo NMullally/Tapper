@@ -10,9 +10,6 @@ import UIKit
 
 class GameButton: UIButton
 {
-    
-    //    button should use rounded rect that goes from square to almost circle and then scale in if possible when deleting.
-    
     // try rename , cant use button type and unsure of other name
     enum ButtonSafety
     {
@@ -27,8 +24,8 @@ class GameButton: UIButton
     
     private enum kButton
     {
-        static let Width : CGFloat = 50
-        static let Height : CGFloat = 50
+        static let Width : CGFloat = 70
+        static let Height : CGFloat = 70
         static let Padding : CGFloat = 2
         static let BorderWidth : CGFloat = 5
         static let BorderColor : CGColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
